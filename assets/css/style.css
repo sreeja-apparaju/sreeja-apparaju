@@ -467,14 +467,18 @@ main {
   z-index: 5;
 }
 
-.navbar-list a {
+.navbar-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding: 0 10px;
+}
+
+.navbar-list a {
   color: var(--light-gray);
   font-size: var(--fs-7);
+  padding: 20px 7px;
   transition: color var(--transition-1);
 }
 
