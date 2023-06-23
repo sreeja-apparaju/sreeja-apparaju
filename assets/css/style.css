@@ -467,7 +467,7 @@ main {
   z-index: 5;
 }
 
-.navbar-list {
+.navbar-list a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -475,17 +475,17 @@ main {
   padding: 0 10px;
 }
 
-.navbar a {
+.navbar-list a {
   color: var(--light-gray);
   font-size: var(--fs-8);
   padding: 20px 7px;
   transition: color var(--transition-1);
 }
 
-.navbar a:hover,
-.navbar a:focus { color: var(--light-gray-70); }
+.navbar-list a:hover,
+.navbar-list a:focus { color: var(--light-gray-70); }
 
-.navbar a.active { color: var(--orange-yellow-crayola); }
+.navbar-list a.active { color: var(--orange-yellow-crayola); }
 
 
 
