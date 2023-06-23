@@ -475,17 +475,17 @@ main {
   padding: 0 10px;
 }
 
-.navbar-link {
+.navbar a {
   color: var(--light-gray);
   font-size: var(--fs-8);
   padding: 20px 7px;
   transition: color var(--transition-1);
 }
 
-.navbar-link:hover,
-.navbar-link:focus { color: var(--light-gray-70); }
+.navbar a:hover,
+.navbar a:focus { color: var(--light-gray-70); }
 
-.navbar-link.active { color: var(--orange-yellow-crayola); }
+.navbar a.active { color: var(--orange-yellow-crayola); }
 
 
 
