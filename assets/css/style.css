@@ -477,7 +477,7 @@ main {
 
 .navbar-list a {
   color: var(--light-gray);
-  font-size: var(--fs-8);
+  font-size: var(--fs-7);
   padding: 20px 7px;
   transition: color var(--transition-1);
 }
@@ -1375,9 +1375,9 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .navbar { border-radius: 20px 20px 0 0; }
 
-  .navbar-list { gap: 20px; }
+  .navbar-list a { gap: 20px; }
 
-  .navbar-link { --fs-8: 14px; }
+  .navbar-list a { --fs-8: 14px; }
 
 
 
@@ -1710,12 +1710,12 @@ textarea.form-input::-webkit-resizer { display: none; }
     box-shadow: none;
   }
 
-  .navbar-list {
+  .navbar-list a {
     gap: 30px;
     padding: 0 20px;
   }
 
-  .navbar-link { font-weight: var(--fw-500); }
+  .navbar-list a { font-weight: var(--fw-500); }
 
 
 
