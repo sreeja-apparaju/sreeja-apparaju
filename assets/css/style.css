@@ -806,6 +806,9 @@ main {
   text-decoration: underline;
 	
 }
+.timeline-list a:hover {
+  text-decoration-style: dotted
+}
 
 .timeline-item:not(:last-child)::before {
   content: "";
