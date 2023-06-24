@@ -1,326 +1,156 @@
-<!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
+<!DOCTYPE html>
+<html lang="en">
 
-        <style>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sreeja Apparaju</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
             /* Set additional styling options for the columns*/
             .column {
             float: left;
             width: 50%;
+            color: var(--light-gray);
+            font-size: var(--fs-6);
+            font-weight: var(--fw-300);
+            line-height: 1.6;
             }
-        
+            .column li {
+              display: inline-block;
+            }
+            .column a {
+              display: inline-block;
+            }
             .row:after {
             content: "";
             display: table;
             clear: both;
+            color: var(--light-gray);
+            font-size: var(--fs-6);
+            font-weight: var(--fw-300);
+            line-height: 1.6;
             }
+  </style>
+</head>
 
-            /* * {
-                padding: 0;
-                margin: 0;
-            } */
-                ul.timeline {
-                    list-style-type: none;
-                    position: relative;
-                }
-                ul.timeline:before {
-                    content: ' ';
-                    background: #d4d9df;
-                    display: inline-block;
-                    position: absolute;
-                    left: 29px;
-                    width: 2px;
-                    height: 100%;
-                    z-index: 400
-                }
-                ul.timeline>li {
-                    margin: 20px 0;
-                    padding-left: 40px
-                }
-                ul.timeline>li:before {
-                    content: ' ';
-                    background: white;
-                    display: inline-block;
-                    position: absolute;
-                    border-radius: 50%;
-                    border: 3px solid #64b8cc;
-                    left: 20px;
-                    width: 20px;
-                    height: 20px;
-                    z-index: 400
-                }
+<body>
 
-                .text-right {
-    text-align: right;
-  }
+  <!--
+    - #MAIN
+  -->
 
-            </style>
+  <main>
 
-		<title>Experience</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <!--
+      - #SIDEBAR
+    -->
 
-				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+    <aside class="sidebar" data-sidebar>
 
-							<!-- Logo -->
-								<!-- <a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Phantom</span>
-								</a> -->
+      <div class="sidebar-info">
 
-							<!-- Nav -->
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
+        </figure>
 
-						</div>
-					</header>
+        <div class="info-content">
+          <h1 class="name" title="Sreeja Apparaju">Sreeja Apparaju</h1>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Experience</a></li>
-							<!-- <li><a href="index.html">Projects</a></li> -->
-							<!-- <li><a href="elements.html">Elements</a></li> -->
-						</ul>
-					</nav>
+          <p class="title">Software Engineer</p>
+        </div>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<h1>Experience</h1>
-							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
 
-                            <div class="row">
-                                <div class="column" >
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
 
-                                <h2> Industry  </h2>
-                                
-                                <ul class="timeline">
-                                    <li> <a target="_blank" href="https://about.meta.com/realitylabs/">Meta Reality Labs</a> <p style="float: right">May - Aug 2022</p> 
-                                        <i><p style="margin:0"> XR Hologram Creation, Software Engineering Intern</p></i>
-                                        <ul>
-                                            <li>
-                                                Delivered a novel view synthesis pipeline (Pytorch) ported to both the product stack & Detectron2Go framework. Configured model to train on real RGB-D data.
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li> <a target="_blank" href="https://about.meta.com/realitylabs/">Facebook Reality Labs</a> <p style="float: right">May - Aug 2021</p> 
-                                        <i><p style="margin:0">  XR Augmented Calling, Software Engineering Intern</p></i>
-                                        <ul>
-                                            <li>
-                                                Built a Babylon.js-based, 3D visualization website for skinned meshes and point clouds in React, integrating both data streaming from an internal database and local file uploads.
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li> <a target="_blank" href="https://about.meta.com/realitylabs/">Oracle</a> <p style="float: right">May - Aug 2020</p> 
-                                        <i><p style="margin:0"> Omni-Channel Platform, Software Engineering Intern</p></i>
-                                        <p>Created and deployed microservice to Oracle Cloud Infrastructure, implementing a conditional chat feature in Oracle's B2B chat product (Docker, Kafka, Kubernetes, NGINX).</p>
-                                    </li>
-                                </ul>
+      </div>
+
+      <div class="sidebar-info_more">
 
 
-                                <br>
-                                <h2> Leadership </h2>
+        <div class="separator"></div>
 
-                                <ul class="timeline">
-                                    <li> <a target="_blank" href="">CS184: Computer Graphics & Imaging </a> <p style="float: right">Jan 2022 - Present</p> 
-                                        <i><p style="margin:0">Head Teaching Assistant</p></i>
-                                        <ul>
-                                            <li>Organized operations and logistics for a course of 10 TAs and 350+ upper division & graduate students. 
-                                                Developed projects and discussion content, taught a discussion section, held office hours.</li>
+        <ul class="social-list">
 
-                                        </ul>
-                                    </li>
-                                    <li> <a target="_blank" href=""> Mobile Developers of Berkeley </a> <p style="float: right">Sept 2019 - Dec 2021</p> 
-                                        <i><p style="margin:0"> VP Education, VP Development</p></i>
-                                        <ul>
-                                            <li>Organized semester-long iOS and React Native bootcamps, oversaw their 8 mentors, led content development. </li>
-                                            <li> Led new member recruitment (marketing, application / interview deliberations, etc) for 300+ applicants.</li>
-                                        </ul>
-                                    </li>
-                                    <li> <a target="_blank" href="">ProgramHers</a> <p style="float: right">Nov 2017 - Aug 2020</p> 
-                                        <i><p style="margin:0"> Co-founder, President</p></i>
-                                        <ul>
-                                            <li>Founded a 501(c)(3) nonprofit focused on empowering underrepresented students to pursue technology and computing. Reached 150+ students at 3 locations. </li>
-                                            <li>Summer 2020: Organized, taught, & developed curriculum for a free, virtual 4-week web development course (HTML, CSS, JS) centered around social justice and community building. Reached 50+ students globally!</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </p>
+          <li class="social-item">
+            <a href="mailto:sreeja.apparaju@berkeley.edu" class="social-link">
+              <ion-icon name="mail"></ion-icon>
+            </a>
+          </li>
 
-                            <h2> Relevant Coursework: </h2>
-                                <ul>
-								<li>Adv. Computer Graphics Algorithms & Techniques (Graduate)</li>
-                                <li>Immersive Computing & VR (Graduate)</li>
-                                <li>Computer Graphics & Imaging</li>
-                                <li>Machine Learning, Computer Vision & Computational Photography</li>
-                                <li>Computer Architecture</li>
-                                <li>Optimization Models in Engineering</li>
-                                <li>Efficient Algorithms</li>
-                                <li>Signals & Systems</li>
-                                <li>Probability</li>
-                                <li>Discrete Math</li>
-                                <li>Social Justice in EECS</li> 
-                                <li>Teaching Techniques in Computer Science</li>
-                                <li>3D Modeling & Animation</li>
-                            </ul>
-                        </div>
-                        <div class="column" >
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/sreejaapparaju/" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
 
-                            <h2> Research </h2>
-                            <ul class="timeline">
-                                <li> <a target="_blank" href="http://roorda.vision.berkeley.edu/">UC Berkeley Center for Innovation in Vision & Optics</a> <p style="float: right">Jan 2023 - Present</p> 
-                                    <i><p style="margin:0"> Undergraduate Researcher</p></i>
-                                    <ul>
-                                        <li>
-                                            Developing experiments for Oz Vision
-                                        </li>
-                                        <li>
-                                            PIs: Prof. Ren Ng, Prof. Austin Roorda 
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li> <a target="_blank" href="https://intelligentimaging.ucsf.edu">UC San Francisco Center for Intelligent Imaging</a> <p style="float: right">March 2021 - Dec 2022</p> 
-                                    <i><p style="margin:0"> Undergraduate Researcher</p></i>
+          <li class="social-item">
+            <a href="https://github.com/sreeja-apparaju" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
 
-                                    <ul>
-                                        <li>
-                                            Used vision transformers (ViT) to develop a content-based image retrieval framework for chest CTs & X-rays.
-                                        </li>
-                                        <li>
-                                            Presented at <a href="https://rsna2022.rsna.org/">RSNA 2022</a>, <a href="https://www.medrxiv.org/content/10.1101/2023.02.16.23286056v1">first author paper in pre-print</a>
-                                        </li>
-                                        <li>
-                                            PI: Dr. Jae Ho Sohn
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li> <a target="_blank" href="https://people.eecs.berkeley.edu/~sequin/BIO/stu.cur.html ">UC Berkeley EECS, Sequin Lab</a> <p style="float: right">Sept 2019 - Dec 2019</p> 
-                                    <i><p style="margin:0"> Undergraduate Researcher</p></i>
-                                    <ul>
-                                        <li>
-                                            Developed new geometry modules in C++ for NOME (Non-Orientable Manifold Editor), a CAD program that adds efficiency to the 3D design of 2-mainfold free-form surfaces
-                                        </li>
-                                        <li>
-                                            PI: Prof. Carlo Sequin
-                                        </li>
-                                    </ul>
-                                
-                                </li>
-                                <li> <a target="_blank" href="https://www.mat.ucsb.edu/researchLabs/transLAB/">UC Santa Barbara Media Arts & Technology</a> <p style="float: right">June 2017 - Aug 2017</p> 
-                                    <i><p style="margin:0"> Research Intern</p></i>
-                                    <ul>
+        </ul>
 
-                                    <li>
-                                        Developed a vibrational interface between a piano and the body, a tool geared towards helping those with hearing impairments "feel" music that is being played. Used MAX software, music theory, and biological resonance principles. 
-                                    </li>
-                                    <li>
-                                        PI: Prof. Alexis Crawshaw
-                                    </li>
-                                </ul>
-                                </li>
-                            </ul>  
+      </div>
 
-                            <h2> Volunteering & Campus Involvement </h2>
-                            <ul class="timeline">
-                                <li> <a target="_blank" href="https://advocate.berkeley.edu/">Student Advocate's Office</a> <p style="float: right">Aug 2021 - Dec 2022</p> 
-                                    <i><p style="margin:0"> Academic Caseworker</p></i>
-                                    <ul>
-                                        <li>
-                                            Advise and advocate on behalf of client facing university disputes related to academics - everything from formal grade appeals, to medical withdrawals, to problems with professors
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li> <a target="_blank" href="https://www.weareuncuffed.org/">San Quentin Prison: Uncuffed Project </a> <p style="float: right">Nov 2022 - Dec 2022</p> 
-                                    <ul>
-                                        <li>
-                                            Built tech to improve the operational efficiency of employees working on San Quentin's Uncuffed podcast.
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li> <a target="_blank" href="https://codeinplace.stanford.edu/"> [Stanford] CS106A: Programming Methodologies </a> <p style="float: right">March 2020 - May 2020</p> 
-                                    <i><p style="margin:0"> [Code in Place] Teaching Assistant</p></i>
-                                    <ul>
-                                        <li>
-                                            Led weekly discussion sections for Stanford's Code in Place offering of "Programming Methodologies."
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li> <a target="_blank" href=""> [Berkeley] EECS 16A: Information Devices & Systems I </a> <p style="float: right">Jan 2023 - Present</p> 
-                                    <i><p style="margin:0"> Discussion Tutor</p></i>
-                                    <ul>
-                                        <li>
-                                            Aid teaching assistant in teaching weekly discussion sections.
-                                        </li>
-                                    </ul>
-                                </li>
-
-                            </ul>  
-
-                        </div>
-
-                        </div>
-
-                        <center><h2> Honors & Awards </h2></center>
-                        
-                            <ul script="left:200px">
-                        <div class="row" >
-                        <div class="column" >
-                            <li> UC Berkeley Regents’ and Chancellor’s Research Fellowship (2022) </li>
-                            <li>UC Berkeley Leadership Award (2019, 2020)</li>
-                            <li> Adobe Career Academy</li>
-                            <li> Eta Kappa Nu Electrical Engineering Honor Society</li>
-                            <li> UC Berkeley Regents' and Chancellor's Scholar (2019-2023)</li>
-                        </div>
-                        <div class="column" >
-                            
-                            <li> Society of Women Engineers' Paula Loring Simon Scholarship (2019)</li>
-                            <li>Alice Tweed Tuohy Honors Scholar (2019-2023)</li>
-                            <li> Harriet Miller Youth Leadership Award (2019)</li>
-                            <li><a href="https://ncwit.org/">NCWIT</a> Award for Aspirations in Computing Central California Winner (2018, 2019)</li>
-                            </ul>
-                        </div>
-                        </div>
+    </aside>
 
 
-				<!-- Footer -->
-                <footer id="footer">
-                    <div class="inner">
-                        <ul class="copyright">
-                            <li>&copy; Anjali Thakrar. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                        </ul>
-                    </div>
-                </footer>
 
-			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
 
-	</body>
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li>
+            <a href="index.html">About</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="portfolio.html">Portfolio</a>
+          </li>
+
+          <li>
+            <a href="experience.html" class="active">Experience</a>
+          </li>
+
+
+        </ul>
+
+      </nav>
+    </div>
+  </main>
+</body>
 </html>
-	
