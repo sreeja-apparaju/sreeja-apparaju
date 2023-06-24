@@ -801,6 +801,12 @@ main {
   line-height: 1.6;
 }
 
+.timeline-list a{
+  color: var(--vegas-gold);
+  text-decoration: none;
+	
+}
+
 .timeline-item:not(:last-child)::before {
   content: "";
   position: absolute;
