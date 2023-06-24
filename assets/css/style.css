@@ -875,6 +875,8 @@ main {
   #PORTFOLIO
 \*-----------------------------------*/
 
+.portfolio .article-title { margin-bottom: 30px; }
+
 .filter-list { display: none; }
 
 .filter-select-box {
