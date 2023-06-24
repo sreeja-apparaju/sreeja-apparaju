@@ -804,7 +804,7 @@ main {
 .timeline-list a{
   color: var(--vegas-gold);
   font-weight: var(--fw-400);
-  text-decoration-style: dotted;
+  border-bottom: 1px var(--vegas-gold) dotted;
   	
 }
 
