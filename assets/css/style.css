@@ -803,11 +803,12 @@ main {
 
 .timeline-list a{
   color: var(--vegas-gold);
+  font-weight: var(--fw-400);
   text-decoration: dotted;
 	
 }
 .timeline-list a:hover {
-  text-decoration-style: dotted
+  text-decoration-style: dotted;
 }
 
 .timeline-item:not(:last-child)::before {
