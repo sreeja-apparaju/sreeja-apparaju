@@ -803,7 +803,7 @@ main {
 
 .timeline-list a{
   color: var(--vegas-gold);
-  text-decoration: none;
+  text-decoration: underline;
 	
 }
 
