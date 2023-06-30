@@ -1065,7 +1065,7 @@ main {
   #BLOG
 \*-----------------------------------*/
 
-.blog-posts { margin-bottom: 10px; }
+.blog-posts { margin-bottom: 30px; }
 
 .blog-posts-list {
   display: grid;
