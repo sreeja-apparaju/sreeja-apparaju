@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style>
+  body {
+    padding: 100px;
+    width: 1000px;
+    margin: auto;
+    text-align: left;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    color: #121212;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+    margin-top: -20px;
+  
+}
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+  text-align: center;
+  margin-bottom: -30px;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+
+
+</style>
+<title>Neural Network Implementation</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+</head>
+
+<p><a href="https://sreeja-apparaju.github.io/portfolio.html"> < Back</a></p>
+
+
+
+<body>
+
+    <h1 align="middle">Built a Convolutional Neural Network for CIFAR-10 dataset</h1>
+
+<div>
+<br />
+<h2 align="middle">Overview</h2>
+<hr id="f3434bbb-d642-448e-9243-a6c3541ef830"/>
+<p> 
+
+    In this project, I drew inspiration from the renowned AlexNet and LeNet architectures and developed a compact Convolutional Neural Network (CNN) specifically designed for the CIFAR-10 dataset using PyTorch. To enhance the performance of my model, I experimented with different optimizers and employed advanced image preprocessing techniques to enhance the quality of the input data.
+</p>
+
+<p>  You can find my code <a href="https://colab.research.google.com/drive/17kUumV1MkXJU15Zr7WSFw-yiMZrFOyRh?usp=sharing">here</a>. </p>
+
+<br />
+<h2 align="middle">Model Architecture</h2>
+<hr id="f3434bbb-d642-448e-9243-a6c3541ef830"/>
+<p> 
+
+    In my approach, I constructed a 6-layer deep convolutional neural network (CNN) and integrated dropout layers with a Bernoulli parameter set to 0.2 after each convolutional layer. This helped me reduce the correlation between adjacent pixels, effectively preventing overfitting and improving generalization. Then, I passed it through the batch normalization function for alternate channels to reduce internal correlation and stabilize the network during training.
+
+</p>
+
+<p>
+    Influenced by the architecture of AlexNet, I progressively increased the out-channel size by a factor of 4 as we moved deeper into the convolutional layers. This strategy allowed the network to capture more complex features and gain a deeper understanding of the dataset. To downsample the feature maps and reduce the dimensions, I incorporated max pooling after every two layers. This process reduced the spatial resolution by a factor of 2 while retaining the most salient features.
+
+</p>
+
+<p>
+    After the convolution phase, there are 3 dense linear layers. For activation, I utilized the rectified linear unit (ReLU) activation function with no activation for the last layer. Finally, I chose Adam as my optimization model with a learning rate of 0.001. By incorporating these design choices and leveraging techniques inspired by AlexNet, I aimed to create a robust and well-performing CNN model for the task at hand.
+</p>
+
+<img src="https://drive.google.com/uc?export=view&id=1UJGq4iFtxzcQJwAZPKyaCLQnPvS_SZ9-" width="400" 
+height="500" class="center"></img><figcaption>Model Summary </figcaption>
+<br />
+<br />
+<br />
+<h2 align="middle">Improvements</h2>
+<hr id="f3434bbb-d642-448e-9243-a6c3541ef830"/>
+<p> 
+    <ul>
+        <li>
+            Initially, I added the softmax function to the layer of my neutral network. After long and painful journey of debugging and reading PyTorch documentation, I realised that <code> nn.CrossEntropyLoss()</code> already does the softmax for you in the loss computation!As there's really no need to one hot encode, I dropped the final softmax activation function which improved my results. 
+        </li>
+        <br />
+        <li>
+            I used <code>transforms.RandomHorizontalFlip()</code> and <code>transforms.RandomCrop()</code> for preprocessing for CIFAR-10 to introduce data augumentation.  
+        </li>
+        <br />
+        <li>
+            I increased the batch size to 128 to make the training faster.
+        </li>
+        
+
+        
+    </ul>
+
+    <br />
+    <br />
+    <h2 align="middle">Test Accurancy</h2>
+    <hr id="f3434bbb-d642-448e-9243-a6c3541ef830"/>
+    
+    <div class="row">
+        <div class="column">
+          <img src="https://drive.google.com/uc?export=view&id=19FMBHt-QAQM3mphHnXKnG1cneuvG3MPZ" style="width:100%">
+        </div>
+        <div class="column">
+          <img src="https://drive.google.com/uc?export=view&id=1s-dMVdZ_bX_u8UXv86n7N5wagjT9hCPi" style="width:100%">
+        </div>
+        
+    
+      </div>
+
+<br />
+
+</div>
+</body>
+</html>
