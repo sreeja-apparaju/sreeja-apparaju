@@ -118,14 +118,14 @@ code {
 </p>
 <strong>Transaction Status</strong>: The recovery manager is notified of changes in transaction status through three methods: <code>commit(), abort() and end()</code>. In these methods, we set updated the status of the transaction (COMMITTING/ABORTING/COMPLETE), append appropriate log record to the logManager and update the lastLSN in the transaction table. In <code>commit()</code>, te commit record needs to be flushed to disk and in <code>end()</code>, if the transaction ends in an abort, we roll back all changes through helper method <code>rollbackToLSN(long transNum, long LSN)</code> before an EndTransaction record is written. The code for rollbacktoLSN is attached below.
 
-<img src="https://drive.google.com/uc?export=view&id=1bo1BSfxSWtS93Qpp3uQIpDDf7h4RoWqh" width="500" 
+<img src="/project/ARIES/rollback.png" width="500" 
 height="400" class="center" ></img>
 
 <p>
     <strong>Savepoints and Checkpoints</strong>: We implemented savepoints for partial rollbacks whose logic was extremely similar to undoing changes in <code>rollbacktoLSN()</code>. In case of checkpoints, we implemented a fuzzy checkpoint using <code>EndCheckpoint.fitsInOneRecord(# of dpt entries, # of txnTable entries)</code> to check the page where EndChekpoint is located. The code for checkpoint is attached below.
     
 </p>
-<img src="https://drive.google.com/uc?export=view&id=1Pwe5jXerQaFje4XRBJITOPFHjtJfbEOO" width="1000" 
+<img src="/project/ARIES/checkpoint.png" width="1000" 
 height="600" class="center" ></img>
 
 
@@ -141,7 +141,8 @@ height="600" class="center" ></img>
   </ul>
   
 Process: <br />
-<img src="./project/ARIES/restart.png"></img>
+<br />
+<img src="/project/ARIES/restart.png" width="400" class="center"></img>
 </p>
 <strong>Analysis Phase</strong> : <code>restartAnalysis()</code> reconstructs the dirty page table and transaction table from the log. <br />
 <strong>Redo Phase</strong> : <code>restartRedo()</code> restores the database to the exact state at the crash, including all the changes of uncommitted transactions that were running at that point time. <br />
