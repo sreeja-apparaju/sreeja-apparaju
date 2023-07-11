@@ -140,7 +140,8 @@ height="600" class="center" ></img>
     <li>After the undo phase, recovery has finished. To avoid having to abort all the transactions again should we crash, we take a checkpoint.</li>  
   </ul>
   
-Process: (add picture below)
+Process: <br />
+<img src="./project/ARIES/restart.png"></img>
 </p>
 <strong>Analysis Phase</strong> : <code>restartAnalysis()</code> reconstructs the dirty page table and transaction table from the log. <br />
 <strong>Redo Phase</strong> : <code>restartRedo()</code> restores the database to the exact state at the crash, including all the changes of uncommitted transactions that were running at that point time. <br />
