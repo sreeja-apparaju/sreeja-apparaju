@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style>
+  body {
+    padding: 100px;
+    width: 1000px;
+    margin: auto;
+    text-align: left;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    color: #121212;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+    margin-top: -20px;
+  
+}
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+  text-align: center;
+  margin-bottom: -30px;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+.block-color-gray_background{
+    background: rgba(241, 241, 239, 1);
+
+}
+
+
+/* Clear floats after image containers */
+
+
+</style>
+<title>Neural Network Implementation</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+</head>
+
+<p><a href="https://sreeja-apparaju.github.io/portfolio.html"> < Back</a></p>
+
+
+
+<body>
+    <h1 align="middle">CS 186: Introduction to Databases</h1>
+    <h1 align="middle">Project 5: Implementing ARIES algorithm for DBMS</h1>
+    <h2 align ="middle">Quang Nguyenln and Sreeja Apparaju</h2>
+
+<div>
+<br />
+<h2 align="middle">Overview</h2>
+<hr id="f3434bbb-d642-448e-9243-a6c3541ef830"/>
+<p> 
+
+    In this project, we implemented write-ahead logging and support for savepoints, rollbacks, and ACID compliant restart recovery in Java. The project consisted of two parts: forward processing where we perform logging and maintain some metadata such as the dirty page table and transaction table during normal operation of the database, and restart recovery (a.k.a. crash recovery), which consists of the processes taken when the database starts up again.
+</p>
+<br />
+
+
+<h2 align="middle">Section I: Forward Processing</h2>
+<hr id="f3434bbb-d642-448e-9243-a6c3541ef830"/>
+<p> 
+
+    When the database runs for the first time, it will call <code>recoveryManager.initialize() </code> and initialize the master record marking the 0th chekpoint. We store the master record as the very first log record in the log, at LSN 0. The master record stores the LSN of the begin checkpoint record of the most recent successful checkpoint
+</p>
+<strong>Transaction Status</strong>: The recovery manager is notified of changes in transaction status through three methods: <code>commit(), abort() and end()</code>. In these methods, we set updated the status of the transaction (COMMITTING/ABORTING/COMPLETE), append appropriate log record to the logManager and update the lastLSN in the transaction table. In <code>commit()</code>, te commit record needs to be flushed to disk and in <code>end()</code>, if the transaction ends in an abort, we roll back all changes through helper method <code>rollbackToLSN(long transNum, long LSN)</code> before an EndTransaction record is written. The code for rollbacktoLSN is attached below.
+
+<img src="https://drive.google.com/uc?export=view&id=1bo1BSfxSWtS93Qpp3uQIpDDf7h4RoWqh" width="500" 
+height="400" class="center" ></img>
+
+<p>
+    <strong>Savepoints and Checkpoints</strong>: We implemented savepoints for partial rollbacks whose logic was extremely similar to undoing changes in <code>rollbacktoLSN()</code>. In case of checkpoints, we implemented a fuzzy checkpoint using <code>EndCheckpoint.fitsInOneRecord(# of dpt entries, # of txnTable entries)</code> to check the page where EndChekpoint is located. The code for checkpoint is attached below.
+    
+</p>
+<img src="https://drive.google.com/uc?export=view&id=1Pwe5jXerQaFje4XRBJITOPFHjtJfbEOO" width="1000" 
+height="600" class="center" ></img>
+
+
+<br />
+<br />
+<h2 align="middle">Section II: Restart Recovery</h2>
+<hr id="f3434bbb-d642-448e-9243-a6c3541ef830"/>
+<p>
+  In restart, the ARIES algorithm is used for data recovery, the committed transaction is ended, and the uncommitted transaction is aborted and rolled back. We implemented three stages: <code>restartAnalysis(), restartRedo() and restartUndo()</code>. In addition to the three phases of recovery, the restart method does two things:
+  <ul>
+    <li>Between the redo and undo phases, any page in the dirty page table that isn't actually dirty (has changes in-memory that have not been flushed) should be removed from the dirty page table. These pages may be present in the DPT as a result of the analysis phase, if we are uncertain about whether a change has been flushed to disk successfully or not.</li>
+    <li>After the undo phase, recovery has finished. To avoid having to abort all the transactions again should we crash, we take a checkpoint.</li>  
+  </ul>
+  
+Process: (add picture below)
+</p>
+<strong>Analysis Phase</strong> : <code>restartAnalysis()</code> reconstructs the dirty page table and transaction table from the log. <br />
+<strong>Redo Phase</strong> : <code>restartRedo()</code> restores the database to the exact state at the crash, including all the changes of uncommitted transactions that were running at that point time. <br />
+<strong>Undo Phase</strong>: <code>restartUndo()</code> undoes all uncommitted changes, leaving the database in a consistent state<br /> 
+<br />
+<a href="https://colab.research.google.com/drive/1OVFR4iIwSin2Wb9eHrRSyGF7_A7ZJFrb?usp=sharing">Code for restartAnalysis(), restartRedo() and restartUndo()</a>
+<br />
+
+</div>
+</body>
+</html>
