@@ -80,8 +80,9 @@ code {
 
 
 </style>
-<title>Neural Network Implementation</title>
+<title>CNN for CIFAR-10</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="icon" type="image/png" href="./assets/images/my-avatar.png">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
 </head>
 
@@ -163,7 +164,7 @@ height="500" class="center"></img><figcaption>Model Summary </figcaption>
 <p> 
     <ul>
         <li>
-            Initially, I added the softmax function to the layer of my neutral network. After long and painful journey of debugging and reading PyTorch documentation, I realised that <code> nn.CrossEntropyLoss()</code> already does the softmax for you in the loss computation!As there's really no need to one hot encode, I dropped the final softmax activation function which improved my results. 
+            Initially, I added the softmax function to the last layer of my neutral network. After long and painful journey of debugging and reading PyTorch documentation, I realised that <code> nn.CrossEntropyLoss()</code> already does the softmax for you in the loss computation! As there's really no need to one hot encode, I dropped the final softmax activation function which improved my results. 
         </li>
         <br />
         <li>

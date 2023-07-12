@@ -85,8 +85,9 @@ code {
 
 
 </style>
-<title>Neural Network Implementation</title>
+<title>ARIES Recovery</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="icon" type="image/png" href="./assets/images/my-avatar.png">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
 </head>
 
@@ -116,13 +117,13 @@ code {
 
     When the database runs for the first time, it will call <code>recoveryManager.initialize() </code> and initialize the master record marking the 0th chekpoint. We store the master record as the very first log record in the log, at LSN 0. The master record stores the LSN of the begin checkpoint record of the most recent successful checkpoint
 </p>
-<strong>Transaction Status</strong>: The recovery manager is notified of changes in transaction status through three methods: <code>commit(), abort() and end()</code>. In these methods, we set updated the status of the transaction (COMMITTING/ABORTING/COMPLETE), append appropriate log record to the logManager and update the lastLSN in the transaction table. In <code>commit()</code>, te commit record needs to be flushed to disk and in <code>end()</code>, if the transaction ends in an abort, we roll back all changes through helper method <code>rollbackToLSN(long transNum, long LSN)</code> before an EndTransaction record is written. The code for rollbacktoLSN is attached below.
+<strong>Transaction Status</strong>: The recovery manager is notified of changes in transaction status through three methods: <code>commit(), abort() and end()</code>. In these methods, we set updated the status of the transaction (COMMITTING/ABORTING/COMPLETE), append appropriate log record to the logManager and update the lastLSN in the transaction table. In <code>commit()</code>, the commit record needs to be flushed to disk and in <code>end()</code>, if the transaction ends in an abort, we roll back all changes through helper method <code>rollbackToLSN(long transNum, long LSN)</code> before an EndTransaction record is written. The code for rollbacktoLSN is attached below.
 
 <img src="/project/ARIES/rollback.png" width="500" 
 height="400" class="center" ></img>
 
 <p>
-    <strong>Savepoints and Checkpoints</strong>: We implemented savepoints for partial rollbacks whose logic was extremely similar to undoing changes in <code>rollbacktoLSN()</code>. In case of checkpoints, we implemented a fuzzy checkpoint using <code>EndCheckpoint.fitsInOneRecord(# of dpt entries, # of txnTable entries)</code> to check the page where EndChekpoint is located. The code for checkpoint is attached below.
+    <strong>Savepoints and Checkpoints</strong>: We implemented savepoints for partial rollbacks whose logic was extremely similar to undoing changes in <code>rollbacktoLSN()</code>. In case of checkpoints, we implemented a fuzzy checkpoint using the helper function <code>EndCheckpoint.fitsInOneRecord(# of dpt entries, # of txnTable entries)</code> to check the page where EndChekpoint is located. The code for checkpoint is attached below.
     
 </p>
 <img src="/project/ARIES/checkpoint.png" width="1000" 
@@ -148,7 +149,7 @@ Process: <br />
 <strong>Redo Phase</strong> : <code>restartRedo()</code> restores the database to the exact state at the crash, including all the changes of uncommitted transactions that were running at that point time. <br />
 <strong>Undo Phase</strong>: <code>restartUndo()</code> undoes all uncommitted changes, leaving the database in a consistent state<br /> 
 <br />
-<a href="https://colab.research.google.com/drive/1OVFR4iIwSin2Wb9eHrRSyGF7_A7ZJFrb?usp=sharing">Code for restartAnalysis(), restartRedo() and restartUndo()</a>
+You can find my code for restartAnalysis(), restartRedo() and restartUndo() <a href="https://colab.research.google.com/drive/1OVFR4iIwSin2Wb9eHrRSyGF7_A7ZJFrb?usp=sharing">here</a>
 <br />
 
 </div>
