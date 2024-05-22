@@ -309,7 +309,7 @@ article.active {
 }
 
 .image-container img {
-  width: 100%; /* Ensure image fills the container width */
+  width: 33.33%; /* Ensure image fills the container width */
   height: auto; /* Maintain aspect ratio */
   display: block;
   object-fit: cover; /* Ensure image covers the container */
