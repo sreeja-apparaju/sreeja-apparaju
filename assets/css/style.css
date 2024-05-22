@@ -296,7 +296,7 @@ article.active {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .image-container {
@@ -309,7 +309,7 @@ article.active {
 }
 
 .image-container img {
-  width: 33.33%; /* Ensure image fills the container width */
+  width: 45%; /* Ensure image fills the container width */
   height: auto; /* Maintain aspect ratio */
   display: block;
   object-fit: cover; /* Ensure image covers the container */
