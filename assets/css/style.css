@@ -296,20 +296,21 @@ article.active {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .image-container {
   flex: 1;
-  max-width: 300px; /* Set a maximum width for uniform size */
-  max-height: 300px; /* Set a maximum height for uniform size */
+  max-width: 200px; /* Set a maximum width for uniform size */
+  max-height: 200px; /* Set a maximum height for uniform size */
   overflow: hidden;
   border-radius: 10px;
   box-shadow: var(--shadow-2);
+  margin-left: 5px;
 }
 
 .image-container img {
-  width: 45%; /* Ensure image fills the container width */
+  width: 75%; /* Ensure image fills the container width */
   height: auto; /* Maintain aspect ratio */
   display: block;
   object-fit: cover; /* Ensure image covers the container */
